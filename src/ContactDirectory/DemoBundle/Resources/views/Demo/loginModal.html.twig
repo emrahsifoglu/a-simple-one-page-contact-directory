@@ -1,0 +1,15 @@
+<modal id="loginModal" title="Login Form" visible="showLoginModal">
+    <form name="loginForm" ng-controller="loginController" ng-submit="login(credentials)">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" class="form-control" id="username" ng-model="credentials._username" placeholder="Username" required autofocus>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" ng-model="credentials._password" placeholder="Password" required>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+        </div>
+    </form>
+</modal>

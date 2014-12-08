@@ -1,0 +1,16 @@
+parameters:
+    user_manager.class: 'ContactDirectory\UserBundle\Services\UserManager'
+    user_authentication_handler.class: 'ContactDirectory\UserBundle\Component\Authentication\AuthenticationHandler'
+    user_logout_success_handler.class: 'ContactDirectory\UserBundle\Component\Authentication\LogoutSuccessHandler'
+
+services:
+    user_manager:
+        class:  %user_manager.class%
+        arguments:  ['@doctrine.orm.entity_manager']
+    user_authentication_handler:
+        class: %user_authentication_handler.class%
+        public: false
+    user_logout_success_handler:
+        class:  %user_logout_success_handler.class%
+        tags:
+          - { name: 'monolog.logger', channel: 'security' }

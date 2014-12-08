@@ -1,0 +1,15 @@
+parameters:
+     twig_extension.class: 'ContactDirectory\DemoBundle\Twig\Extension\DemoExtension'
+     controller_listener.class: 'ContactDirectory\DemoBundle\EventListener\ControllerListener'
+
+services:
+     twig.extension:
+          class: %twig_extension.class%
+          arguments: [@twig.loader]
+          tags:
+            - { name: 'twig.extension' }
+     controller.listener:
+          class: %controller_listener.class%
+          arguments: [@twig.extension]
+          tags:
+            - { name: 'kernel.event_listener', event: 'kernel.controller', method: onKernelController }

@@ -1,0 +1,27 @@
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles:        [ ContactDirectoryDemoBundle ]
+
+    assets:
+        angular_js:
+            inputs:
+                - '%kernel.root_dir%/Resources/public/bower/angular/angular.min.js'
+        angular_animate_js:
+            inputs:
+                - '%kernel.root_dir%/Resources/public/bower/angular-animate/angular-animate.min.js'
+        angular_route_js:
+            inputs:
+                - '%kernel.root_dir%/Resources/public/bower/angular-route/angular-route.min.js'
+        jquery_js:
+            inputs:
+                - '%kernel.root_dir%/Resources/public/bower/jquery/dist/jquery.js'
+        jquery_ui_js:
+            inputs:
+                - '%kernel.root_dir%/Resources/public/bower/jquery-ui/index.js'
+        bootstrap_js:
+            inputs:
+                - '%kernel.root_dir%/Resources/public/bower/bootstrap/dist/js/bootstrap.min.js'
+        bootstrap_css:
+            inputs:
+                - '%kernel.root_dir%/Resources/public/bower/bootstrap/dist/css/bootstrap.min.css'

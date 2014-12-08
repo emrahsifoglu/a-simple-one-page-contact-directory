@@ -1,0 +1,3 @@
+_demo:
+    resource: "@ContactDirectoryDemoBundle/Controller/DemoController.php"
+    type:     annotation

@@ -1,0 +1,5 @@
+login_check:
+    path: /demo/secured/login_check
+
+logout:
+    path: /demo/secured/logout

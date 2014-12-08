@@ -1,0 +1,32 @@
+_api_v1_create:
+    pattern: /api/v1/person/
+    defaults: { _controller: ContactDirectoryPersonBundle:CRUD:create, _format: json }
+    requirements:
+        _method: POST
+
+_api_v1_fetch:
+    pattern: /api/v1/person/{id}
+    defaults: {_controller: ContactDirectoryPersonBundle:CRUD:fetch, _format: json }
+    requirements:
+        _method: GET
+        id: "\d+"
+
+_api_v1_fetchAll:
+    pattern: /api/v1/person/
+    defaults: {_controller: ContactDirectoryPersonBundle:CRUD:fetchAll, _format: json }
+    requirements:
+        _method: GET
+
+_api_v1_update:
+    pattern: /api/v1/person/{id}
+    defaults: { _controller: ContactDirectoryPersonBundle:CRUD:update, _format: json }
+    requirements:
+        _method: PUT
+        id: "\d+"
+
+_api_v1_delete:
+    pattern: /api/v1/person/{id}
+    defaults: { _controller: ContactDirectoryPersonBundle:CRUD:delete, _format: json }
+    requirements:
+        _method: DELETE
+        id: "\d+"

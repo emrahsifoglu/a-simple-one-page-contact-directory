@@ -1,0 +1,38 @@
+security:
+  access_denied_url:    ~ # Example: /foo/error403
+
+  encoders:
+       ContactDirectory\UserBundle\Entity\User:
+           algorithm:        sha1
+           encode_as_base64: false
+           iterations:       1
+
+  providers:
+        main:
+          entity: { class: ContactDirectory\UserBundle\Entity\User, property: username }
+
+  firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+            anonymous: ~
+
+        secured_area:
+           pattern:    ^/demo/secured/
+           form_login:
+                require_previous_session: false
+                check_path: /demo/secured/login_check
+                success_handler: user_authentication_handler
+                failure_handler: user_authentication_handler
+           logout:
+                path:  /demo/secured/logout
+                success_handler: user_logout_success_handler
+           http_basic:
+                realm: "Secured Area"
+
+  access_control:
+        - { path: ^/demo/secured/,  roles: ROLE_ADMIN }
+
+  role_hierarchy:
+      ROLE_ADMIN: ROLE_ADMIN
+      ROLE_USER: ROLE_USER

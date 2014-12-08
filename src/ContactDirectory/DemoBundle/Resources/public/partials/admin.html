@@ -1,0 +1,124 @@
+<div class="jumbotron text-center">
+    <h1>Admin</h1>
+    <p>[[ message ]]</p>
+</div>
+<modal id="deleteConfirmationModal" title="Delete Person" visible="showDeleteConfirmation">
+    <p>Do you want to delete this person?</p>
+    <div class="form-group" style="text-align: right;">
+        <a ng-click="deletePerson()" class="btn btn-small btn-danger">DELETE</a>
+        <a ng-click="toggleDeleteModal(0)" class="btn btn-small btn-default">CANCEL</a>
+    </div>
+</modal>
+<img src="/bundles/contactdirectorydemo/images/loading.gif" ng-show="loading" class="center-block" title="Loading..." />
+<div class="span6 ">
+    <table class="table table-striped table-condensed" ng-hide="loading">
+        <thead>
+            <tr>
+                <th style="min-width: 160px;">
+                    <div>
+                        First Name
+                        Last Name
+                    </div>
+                </th>
+                <th style="width: 100px;">
+                    <!--Add + Cancel-->
+                    <div class="btn-toolbar"><i class="btn glyphicon glyphicon-plus" ng-click="toggleAddMode()" title="Add" ng-hide="addMode"></i></div>
+                    <div class="btn-toolbar"><i class="btn glyphicon glyphicon-minus" ng-click="toggleAddMode()" title="Cancel" ng-show="addMode"></i></div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-show="addMode">
+                <td>
+                    <div class="form-group">
+                        <form name="new_person_form" novalidate>
+                            <div>
+                                <input class="form-control" style="float:left; width: 50%" name="firstName" ng-model="newPerson.firstName" placeholder="First Name" ng-minlength=3 ng-maxlength=50 required />
+                                <input class="form-control" style="float: left; width: 50%" name="lastName" ng-model="newPerson.lastName" placeholder="Last Name" ng-minlength=3 ng-maxlength=50 required />
+                                <div class="error" ng-show="new_person_form.firstName.$pristine || new_person_form.firstName.$invalid">
+                                    <small class="error" ng-show="new_person_form.firstName.$error.required"></small>
+                                    <small class="error" ng-show="new_person_form.firstName.$error.minlength">
+                                        Person firstName is required to be at least 3 characters
+                                    </small>
+                                    <small class="error" ng-show="new_person_form.firstName.$error.maxlength">
+                                        Person firstName cannot be longer than 50 characters
+                                    </small>
+                                </div>
+                                <div class="error" ng-show="new_person_form.lastName.$pristine || new_person_form.lastName.$invalid">
+                                    <small class="error" ng-show="new_person_form.lastName.$error.required"></small>
+                                    <small class="error" ng-show="new_person_form.lastName.$error.minlength">
+                                        Person lastName is required to be at least 3 characters
+                                    </small>
+                                    <small class="error" ng-show="new_person_form.lastName.$error.maxlength">
+                                        Person lastName cannot be longer than 50 characters
+                                    </small>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </td>
+                <td>
+                    <div class="btn-toolbar">
+                        <!--Create + Cancel-->
+                        <div class="btn-group">
+                            <i class="btn glyphicon glyphicon-floppy-disk" ng-click="createPerson(newPerson)" title="Create" ng-disabled="new_person_form.$invalid"></i>
+                            <i class="btn glyphicon glyphicon-remove" ng-click="toggleAddMode()" title="Cancel"></i>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr ng-repeat="person in people">
+                <td>
+                    <div  ng-hide="editMode==person.id">
+                        <span>[[ person.firstName ]]</span>
+                        <span>[[ person.lastName ]]</span>
+                    </div>
+                    <div class="form-group" ng-show="editMode==person.id">
+                        <form name="edit_person_form" novalidate>
+                            <div>
+                               <input style="float:left; width: 50%" name="firstName" ng-model="person.firstName" class="form-control" placeholder="First Name" ng-minlength=3 ng-maxlength=50 required />
+                               <input style="float: left; width: 50%" name="lastName" ng-model="person.lastName" class="form-control" placeholder="First Name" ng-minlength=3 ng-maxlength=50 required />
+                                <div class="error" ng-show="edit_person_form.firstName.$dirty && edit_person_form.firstName.$invalid">
+                                    <small class="error" ng-show="edit_person_form.firstName.$error.required"></small>
+                                    <small class="error" ng-show="edit_person_form.firstName.$error.minlength">
+                                        Person firstName is required to be at least 3 characters
+                                    </small>
+                                    <small class="error" ng-show="edit_person_form.firstName.$error.maxlength">
+                                        Person firstName cannot be longer than 50 characters
+                                    </small>
+                                </div>
+                                <div class="error" ng-show="edit_person_form.lastName.$dirty && edit_person_form.lastName.$invalid">
+                                    <small class="error" ng-show="edit_person_form.lastName.$error.required"></small>
+                                    <small class="error" ng-show="edit_person_form.lastName.$error.minlength">
+                                        Person lastName is required to be at least 3 characters
+                                    </small>
+                                    <small class="error" ng-show="edit_person_form.lastName.$error.maxlength">
+                                        Person lastName cannot be longer than 50 characters
+                                    </small>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </td>
+                <!--Buttons column-->
+                <td>
+                    <!--Edit + Delete-->
+                    <div class="btn-toolbar" ng-show="editMode != person.id">
+                        <div class="btn-group">
+                            <i class="btn glyphicon glyphicon-edit" ng-click="toggleEditMode(person)" title="Edit"></i>
+                            <i class="btn glyphicon glyphicon-trash" ng-click="toggleDeleteModal(person.id)" title="Delete"></i>
+                        </div>
+                    </div>
+
+                    <!--Save + Cancel-->
+                    <div class="btn-toolbar" ng-show="editMode == person.id">
+                        <div class="btn-group">
+                            <i class="btn glyphicon glyphicon-floppy-disk" ng-click="updatePerson(person)" title="Save" ng-disabled="edit_person_form.$invalid || !edit_person_form.$dirty"></i>
+                            <i class="btn glyphicon glyphicon-remove" ng-click="toggleEditMode(person)" title="Cancel"></i>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

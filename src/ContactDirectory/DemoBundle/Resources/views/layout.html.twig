@@ -1,0 +1,53 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en-GB"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en-GB"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en-GB"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en-GB"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>{% block title %}Symfony2, AngularJs, Forms!{% endblock %}</title>
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('bundles/contactdirectorydemo/css/style.css') }}" />
+</head>
+<body ng-cloak ng-app="cdDemoApp" ng-controller="appController">
+
+    {% block body %}
+
+        <header>
+            <div ng-include='"bundles/contactdirectorydemo/templates/header.html"'></div>
+        </header>
+
+        <div class="body" style="height: 100%">
+            <div id="container">
+                <div id="content">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div ng-include='"bundles/contactdirectorydemo/templates/footer.html"'></div>
+        </footer>
+
+        {% javascripts
+            '@jquery_js'
+            '@jquery_ui_js'
+            '@angular_js'
+            '@angular_route_js'
+            '@angular_animate_js'
+            '@bootstrap_js'
+            output="js/libraries.js"
+            %}
+            <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+
+        {% block js %}{% endblock %}
+
+    {% endblock %}
+</body>

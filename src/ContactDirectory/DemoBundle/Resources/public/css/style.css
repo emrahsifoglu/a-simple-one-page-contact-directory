@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Helvetica, sans-serif;
+}
+
+html { height:100%; }
+
+body { min-height:100%; padding:0; margin:0; position:relative; }
+
+body:after { content:''; display:block; height:100px; }
+
+table {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+footer {
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 30px;
+    width: 100%;
+    background-color: #949494;
+    color: #ffffff;
+}
+
+.content {
+    margin: 50px 15%;
+}

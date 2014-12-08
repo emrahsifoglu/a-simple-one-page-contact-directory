@@ -1,0 +1,14 @@
+{
+  "name": "jquery-ui",
+  "_cacheHeaders": {
+    "ETag": "\"54499a48-6a684\"",
+    "Last-Modified": "Fri, 24 Oct 2014 00:16:08 GMT",
+    "Content-Length": "435844",
+    "Content-Type": "application/x-javascript"
+  },
+  "_release": "e-tag:54499a48-",
+  "main": "index.js",
+  "_source": "http://code.jquery.com/ui/1.10.3/jquery-ui.js",
+  "_target": "*",
+  "_originalSource": "http://code.jquery.com/ui/1.10.3/jquery-ui.js"
+}

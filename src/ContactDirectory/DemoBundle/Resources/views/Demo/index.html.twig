@@ -1,0 +1,23 @@
+{% extends "ContactDirectoryDemoBundle::layout.html.twig" %}
+
+{% block title "Symfony2 Angular Forms Demo" %}
+
+{% block content %}
+
+    {% include 'ContactDirectoryDemoBundle:Demo:loginModal.html.twig' %}
+
+    <div ng-view></div>
+{% endblock %}
+
+{% block js %}
+    {% javascripts
+        'bundles/contactdirectorydemo/js/providers.js'
+        'bundles/contactdirectorydemo/js/factories.js'
+        'bundles/contactdirectorydemo/js/services.js'
+        'bundles/contactdirectorydemo/js/directives.js'
+        'bundles/contactdirectorydemo/js/controllers.js'
+        'bundles/contactdirectorydemo/js/app.js'
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

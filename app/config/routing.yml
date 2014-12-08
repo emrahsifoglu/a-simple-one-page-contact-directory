@@ -1,0 +1,10 @@
+_contact_directory_demo:
+    resource: "@ContactDirectoryDemoBundle/Resources/config/routing.yml"
+
+_contact_directory_person:
+    resource: "@ContactDirectoryPersonBundle/Resources/config/routing.yml"
+    prefix:   /
+
+_contact_directory_user:
+    resource: "@ContactDirectoryUserBundle/Resources/config/routing.yml"
+    prefix:   /

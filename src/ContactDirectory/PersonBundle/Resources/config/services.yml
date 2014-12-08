@@ -1,0 +1,7 @@
+parameters:
+    person_manager.class: 'ContactDirectory\PersonBundle\Services\PersonManager'
+
+services:
+    person_manager:
+        class:  %person_manager.class%
+        arguments:  ['@doctrine.orm.entity_manager']
