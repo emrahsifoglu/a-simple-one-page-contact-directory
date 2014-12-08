@@ -12,9 +12,11 @@ This is a SPA built with AngularJS + Symfony2. It allows users to store contact 
 
 ### How It Works ###
 
-When a user attempts to enter a route, first it will be checked whether authentication is required. Without role, user wouldn't be allowed and will be redirected to home route.
+When a user attempts to enter a route, first it will be checked whether authentication is required.
 
-Log in and log out credentials are submitted with AJAX. CRUD operations are also performed thought RESTFUL API using AJAX.
+Without role, user wouldn't be allowed and will be redirected to home route.
+
+Log in and log out credentials are submitted with AJAX. CRUD operations are also performed through RESTFUL API using AJAX.
 
 There are 3 bundles in ContactDirectory.
 
