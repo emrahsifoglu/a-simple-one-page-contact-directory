@@ -26,7 +26,7 @@ This is main bundle consists front end codes.
 
 #### PersonBundle ####
 
-RESTFUL API is here with its PHPUnit test which checks all API functions. API controller doesn't involved with database operations directly. Instead, it uses a custom service named PersonManager.
+RESTFUL API is here with its PHPUnit test which checks all API functions. API controller doesn't get involved with database operations directly. Instead, it uses a custom service named PersonManager.
 
 #### UserBundle ####
 
