@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CRUDControllerTest extends WebTestCase {
 
-    public function  testCreatePerson(){
+    public function testCreatePerson(){
 
         $client = static::createClient();
         $client->request('POST', '/api/v1/person/');
